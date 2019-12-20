@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/nschloe/tmf"><img alt="tmf" src="https://nschloe.github.io/tmf/logo.svg" width="30%"></a>
-  <p align="center">Tarred XDMF.</p>
+  <p align="center">Tarred <a href="http://xdmf.org/index.php/Main_Page">XDMF</a>.</p>
 </p>
 
 [![CircleCI](https://img.shields.io/circleci/project/github/nschloe/tmf/master.svg?style=flat-square)](https://circleci.com/gh/nschloe/tmf/tree/master)
@@ -10,11 +10,11 @@
 [![GitHub stars](https://img.shields.io/github/stars/nschloe/tmf.svg?style=flat-square&logo=github&label=Stars&logoColor=white)](https://github.com/nschloe/tmf)
 [![PyPi downloads](https://img.shields.io/pypi/dm/tmf.svg?style=flat-square)](https://pypistats.org/packages/tmf)
 
-The XDMF data and mesh format is arguably one of the best mesh format out there in terms
-of file size, I/O speed, and ecosystem. There is one annoyance though that has bugged me
-over the years: When using the Binary or HDF data type (which you should), an XDMF
-archive consists of multiple files. When copying things over, it is easy to miss or
-accidentally replace one of those.
+[The XDMF data and mesh format](http://xdmf.org/index.php/Main_Page) is arguably one of
+the best mesh format out there in terms of file size, I/O speed, and ecosystem. There is
+one annoyance though that has bugged me over the years: When using the Binary or HDF
+data type (which you should), an XDMF archive consists of multiple files. When copying
+things over, it is easy to miss or accidentally replace one of those.
 
 Along comes TMF, tar + XDMF. It's just like XDMF, except that it puts all files in on
 tarball, the tmf file. It also restricts itself to HDF data (which most XDMF files use
