@@ -5,7 +5,8 @@ import tempfile
 import meshio
 
 
-def write(filename, mesh, data_format="HDF", compression="gzip"):
+def write(filename, mesh, compression="gzip", compression_opts=None):
+    data_format = "HDF"
     basename = os.path.splitext(os.path.basename(filename))[0]
     with tempfile.TemporaryDirectory() as tmpdir:
         meshio.xdmf.write(
@@ -13,6 +14,7 @@ def write(filename, mesh, data_format="HDF", compression="gzip"):
             mesh,
             data_format=data_format,
             compression=compression,
+            compression_opts=compression_opts,
         )
         with tarfile.open(filename, "w") as tar:
             tar.add(tmpdir, arcname="")

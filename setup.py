@@ -36,5 +36,12 @@ setup(
         "Topic :: Scientific/Engineering :: Mathematics",
     ],
     python_requires=">=3",
-    # entry_points={"console_scripts": ["tmf-show = tmf.cli:show"]},
+    entry_points={
+        "console_scripts": [
+            "tmf-info = tmf._cli:info",
+            "tmf-convert = tmf._cli:convert",
+            "tmf-compress = tmf._cli:compress",
+            "tmf-uncompress = tmf._cli:uncompress",
+        ]
+    },
 )

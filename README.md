@@ -8,3 +8,6 @@ accidentally replace one of those.
 
 Along comes TMF, tar + XDMF. It's just like XDMF, except that it puts all files in on
 tarball, the tmf file.
+
+
+TODO only HDF data, not binary, ASCII

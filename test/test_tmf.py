@@ -1,9 +1,10 @@
-import meshio
-import tempfile
 import os
-import numpy
-import tmf
+import tempfile
 
+import numpy
+
+import meshio
+import tmf
 
 tri_mesh_2d = meshio.Mesh(
     numpy.array([[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]]) / 3,
