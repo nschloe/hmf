@@ -1,4 +1,4 @@
-VERSION=$(shell python3 -c "import pyfoobar; print(pyfoobar.__version__)")
+VERSION=$(shell python3 -c "import tmf; print(tmf.__version__)")
 
 default:
 	@echo "\"make publish\"?"
@@ -18,7 +18,7 @@ tag:
 	git tag v$(VERSION)
 	git push --tags
 	# Always create a github "release" right after tagging so it appears on zenodo
-	curl -H "Authorization: token `cat $(HOME)/.github-access-token`" -d '{"tag_name": "$(VERSION)"}' https://api.github.com/repos/nschloe/pyfoobar/releases
+	curl -H "Authorization: token `cat $(HOME)/.github-access-token`" -d '{"tag_name": "$(VERSION)"}' https://api.github.com/repos/nschloe/tmf/releases
 
 publish: tag upload
 
