@@ -20,7 +20,7 @@ setup(
     },
     author=about["__author__"],
     author_email=about["__email__"],
-    install_requires=["meshio"],
+    install_requires=["meshio", "lxml"],
     description="Tar + XDMF mesh format",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
