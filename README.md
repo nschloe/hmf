@@ -3,7 +3,7 @@
   <p align="center">Tarred <a href="http://xdmf.org/index.php/Main_Page">XDMF</a>.</p>
 </p>
 
-[![CircleCI](https://img.shields.io/circleci/project/github/nschloe/tmf/master.svg?style=flat-square)](https://circleci.com/gh/nschloe/tmf/tree/master)
+[![gh-actions](https://img.shields.io/github/workflow/status/nschloe/tmf/ci?style=flat-square)](https://github.com/nschloe/tmf/actions)
 [![codecov](https://img.shields.io/codecov/c/github/nschloe/tmf.svg?style=flat-square)](https://codecov.io/gh/nschloe/tmf)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/psf/black)
 [![PyPi Version](https://img.shields.io/pypi/v/tmf.svg?style=flat-square)](https://pypi.org/project/tmf)
