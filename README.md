@@ -26,7 +26,7 @@ Install with
 pip install tmf
 ```
 and use the command-line tools
-```
+```bash
 tmf-convert <input-mesh-file> <output-mesh-file>   # convert to/from tmf into other formats
 tmf-info <input-tmf>                               # print some info about the file
 tmf-compress <input-tmf>                           # compress the tmf file
