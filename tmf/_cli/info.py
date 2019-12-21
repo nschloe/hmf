@@ -16,7 +16,17 @@ def info(argv=None):
     mesh = read(args.infile)
     size = os.stat(args.infile).st_size / 1024.0 ** 2
     print(f"File size: {size} MB")
-    print(mesh)
+    print(f"Number of points: {mesh.points.shape[0]}")
+    print("Number of cells:")
+    for key, data in mesh.cells.items():
+        print(f"  {key}: {data.shape[0]}")
+    if mesh.point_data:
+        print("Point data: {}".format(", ".join(mesh.point_data.keys())))
+    if mesh.cell_data:
+        keys = set()
+        for key in mesh.cell_data:
+            keys = keys.union(set(list(mesh.cell_data[key].keys())))
+        print("Cell data: {}".format(", ".join(keys)))
 
     # check if the cell arrays are consistent with the points
     is_consistent = True
