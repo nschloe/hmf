@@ -35,7 +35,7 @@ setup(
         "Topic :: Scientific/Engineering",
         "Topic :: Scientific/Engineering :: Mathematics",
     ],
-    python_requires=">=3",
+    python_requires=">=3.6",
     entry_points={
         "console_scripts": [
             "tmf-info = tmf._cli:info",
