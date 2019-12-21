@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/nschloe/tmf"><img alt="tmf" src="https://nschloe.github.io/tmf/logo.svg" width="30%"></a>
+  <a href="https://github.com/nschloe/tmf"><img alt="tmf" src="https://raw.githubusercontent.com/nschloe/tmf/gh-pages/logo.svg" width="30%"></a>
   <p align="center">Tarred <a href="http://xdmf.org/index.php/Main_Page">XDMF</a>.</p>
 </p>
 
