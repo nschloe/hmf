@@ -20,6 +20,17 @@ def write(filename, mesh, compression="gzip", compression_opts=None):
             tar.add(tmpdir, arcname="")
 
 
+def write_points_cells(
+    filename, points, cells, compression="gzip", compression_opts=None
+):
+    write(
+        filename,
+        meshio.Mesh(points, cells),
+        compression=compression,
+        compression_opts=compression_opts,
+    )
+
+
 def read(filename):
     with tempfile.TemporaryDirectory() as tmpdir:
         with tarfile.open(filename, "r") as tar:

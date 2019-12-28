@@ -39,6 +39,22 @@ Note that compressed TMF files (which is the default) tend to be much smaller, b
 require a bit longer to read. Depending on how often you need to read a file, you might
 want to `tmf-uncompress` it first.
 
+#### ParaView plugin
+
+You can use a plugin to read TMF files with ParaView. Open ParaView and go to
+
+> _Tools_ -> _Manage Plugins..._ -> _Load New ..._
+
+and select the file `paraview-tmf-plugin.py` (typically installed at
+`$HOME/.local/paraview-plugin`). Also activate _Auto Load_.
+
+After that, you can view any TMF file with ParaView. Note that you might have to start
+ParaView with
+```
+HDF5_DISABLE_VERSION_CHECK=1 paraview out.tmf
+```
+to avoid a version warning/error.
+
 
 ### License
 
