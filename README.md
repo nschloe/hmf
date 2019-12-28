@@ -15,9 +15,13 @@ There is one annoyance though that has bugged me over the years: If using the bi
 HDF data type (which you should), an XDMF archive consists of _multiple_ files. When
 copying things over, it is easy to miss or accidentally replace one of those.
 
-Along comes TMF, tar + XDMF. It's just like XDMF, except that it puts all files in one:
-tarball, the TMF file. It also restricts itself to HDF data (which most XDMF files use
-anyway).
+Along comes TMF, tar + XDMF convenience format. It's just like XDMF, except that it puts
+all files in one: tarball, the TMF file. It also restricts itself to HDF data (which
+most XDMF files use anyway).
+
+_Disadvantage:_ Since tar is inheriently serial, all your data has to be pushed through
+one core and its memory. If your files are too large for that, better stick with vanilla
+XDMF.
 
 This repository contains a Python package that makes working with TMF files easy.
 Install with
@@ -27,7 +31,7 @@ pip install tmf
 and use the command-line tools
 ```bash
 tmf-info <input-tmf>                               # print some info about the file
-tmf-convert <input-mesh-file> <output-mesh-file>   # convert to/from tmf into other formats
+tmf-convert <input-mesh-file> <output-mesh-file>   # convert to/from TMF into other formats
 tmf-compress <input-tmf>                           # compress the TMF file
 tmf-uncompress <input-tmf>                         # uncompress the TMF file
 ```
