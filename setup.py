@@ -36,6 +36,7 @@ setup(
         "Topic :: Scientific/Engineering :: Mathematics",
     ],
     python_requires=">=3.6",
+    data_files=[("paraview-plugins", ["scripts/paraview-tmf-plugin.py"])],
     entry_points={
         "console_scripts": [
             "tmf-info = tmf._cli:info",
