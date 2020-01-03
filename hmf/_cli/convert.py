@@ -5,8 +5,8 @@ import numpy
 
 from meshio._helpers import _writer_map, read, reader_map, write
 
-from .._main import read as tmf_read
-from .._main import write as tmf_write
+from .._main import read as hmf_read
+from .._main import write as hmf_write
 from .common import _get_version_text
 
 
@@ -17,12 +17,12 @@ def convert(argv=None):
 
     # read mesh data
     if args.input_format is None:
-        is_tmf = os.path.splitext(args.infile)[-1] == ".tmf"
+        is_hmf = os.path.splitext(args.infile)[-1] == ".hmf"
     else:
-        is_tmf = args.input_format.lower() == "tmf"
+        is_hmf = args.input_format.lower() == "hmf"
 
-    if is_tmf:
-        mesh = tmf_read(args.infile)
+    if is_hmf:
+        mesh = hmf_read(args.infile)
     else:
         mesh = read(args.infile, file_format=args.input_format)
 
@@ -41,12 +41,12 @@ def convert(argv=None):
 
     # write it out
     if args.output_format is None:
-        is_tmf = os.path.splitext(args.outfile)[-1] == ".tmf"
+        is_hmf = os.path.splitext(args.outfile)[-1] == ".hmf"
     else:
-        is_tmf = args.output_format.lower() == "tmf"
+        is_hmf = args.output_format.lower() == "hmf"
 
-    if is_tmf:
-        tmf_write(args.outfile, mesh)
+    if is_hmf:
+        hmf_write(args.outfile, mesh)
     else:
         write(args.outfile, mesh, file_format=args.output_format)
 

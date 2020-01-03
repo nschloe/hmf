@@ -3,8 +3,8 @@ import tempfile
 
 import numpy
 
+import hmf
 import meshio
-import tmf
 
 tri_mesh_2d = meshio.Mesh(
     numpy.array([[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]]) / 3,
@@ -14,9 +14,9 @@ tri_mesh_2d = meshio.Mesh(
 
 def test_write_read():
     with tempfile.TemporaryDirectory() as tmpdir:
-        filename = os.path.join(tmpdir, "out.tmf")
-        tmf.write(filename, tri_mesh_2d)
-        mesh = tmf.read(filename)
+        filename = os.path.join(tmpdir, "out.hmf")
+        hmf.write(filename, tri_mesh_2d)
+        mesh = hmf.read(filename)
 
     tol = 1.0e-12
     assert numpy.all(numpy.abs(mesh.points - tri_mesh_2d.points) < tol)

@@ -1,4 +1,4 @@
-# tmf Code of Conduct
+# hmf Code of Conduct
 
 ## Our Pledge
 

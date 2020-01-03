@@ -7,4 +7,4 @@ def _get_version_text():
     python_version = (
         f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"
     )
-    return f"tmf {__version__} [Python {python_version}]\n{__copyright__}"
+    return f"hmf {__version__} [Python {python_version}]\n{__copyright__}"
