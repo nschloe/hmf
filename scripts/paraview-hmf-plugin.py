@@ -1,6 +1,7 @@
-import meshio
-from hmf import __version__, __email__, read, write_points_cells
 import numpy as np
+
+import meshio
+from hmf import __email__, __version__, read, write_points_cells
 from paraview.util.vtkAlgorithm import (
     VTKPythonAlgorithmBase,
     smdomain,
