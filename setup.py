@@ -5,18 +5,18 @@ from setuptools import find_packages, setup
 # https://packaging.python.org/single_source_version/
 base_dir = os.path.abspath(os.path.dirname(__file__))
 about = {}
-with open(os.path.join(base_dir, "tmf", "__about__.py"), "rb") as f:
+with open(os.path.join(base_dir, "hmf", "__about__.py"), "rb") as f:
     exec(f.read(), about)
 
 
 setup(
-    name="tmf",
+    name="hmf",
     version=about["__version__"],
     packages=find_packages(),
-    url="https://github.com/nschloe/tmf",
+    url="https://github.com/nschloe/hmf",
     project_urls={
-        "Code": "https://github.com/nschloe/tmf",
-        "Issue tracker": "https://github.com/nschloe/tmf/issues",
+        "Code": "https://github.com/nschloe/hmf",
+        "Issue tracker": "https://github.com/nschloe/hmf/issues",
     },
     author=about["__author__"],
     author_email=about["__email__"],
@@ -36,13 +36,13 @@ setup(
         "Topic :: Scientific/Engineering :: Mathematics",
     ],
     python_requires=">=3.6",
-    data_files=[("paraview-plugins", ["scripts/paraview-tmf-plugin.py"])],
+    data_files=[("paraview-plugins", ["scripts/paraview-hmf-plugin.py"])],
     entry_points={
         "console_scripts": [
-            "tmf-info = tmf._cli:info",
-            "tmf-convert = tmf._cli:convert",
-            "tmf-compress = tmf._cli:compress",
-            "tmf-uncompress = tmf._cli:uncompress",
+            "hmf-info = hmf._cli:info",
+            "hmf-convert = hmf._cli:convert",
+            "hmf-compress = hmf._cli:compress",
+            "hmf-uncompress = hmf._cli:uncompress",
         ]
     },
 )

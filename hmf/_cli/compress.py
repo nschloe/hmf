@@ -1,7 +1,7 @@
 import argparse
 
-from .._main import read as tmf_read
-from .._main import write as tmf_write
+from .._main import read as hmf_read
+from .._main import write as hmf_write
 from .common import _get_version_text
 
 
@@ -9,19 +9,19 @@ def compress(argv=None):
     # Parse command line arguments.
     parser = _get_parser()
     args = parser.parse_args(argv)
-    mesh = tmf_read(args.file)
-    tmf_write(
+    mesh = hmf_read(args.file)
+    hmf_write(
         args.file, mesh, compression="gzip", compression_opts=args.compression_level
     )
 
 
 def _get_parser():
     parser = argparse.ArgumentParser(
-        description=("Uncompress tmf file."),
+        description=("Uncompress hmf file."),
         formatter_class=argparse.RawTextHelpFormatter,
     )
 
-    parser.add_argument("file", type=str, help="tmf mesh file to compress")
+    parser.add_argument("file", type=str, help="hmf mesh file to compress")
 
     parser.add_argument(
         "--compression-level",

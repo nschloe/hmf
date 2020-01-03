@@ -1,5 +1,5 @@
 import meshio
-from tmf import __version__, __email__, read, write_points_cells
+from hmf import __version__, __email__, read, write_points_cells
 import numpy as np
 from paraview.util.vtkAlgorithm import (
     VTKPythonAlgorithmBase,
@@ -12,13 +12,13 @@ from vtkmodules.numpy_interface import dataset_adapter as dsa
 from vtkmodules.vtkCommonDataModel import vtkUnstructuredGrid
 
 __author__ = "Tianyi Li, Nico Schlömer"
-__copyright__ = f"Copyright (c) 2019 {__author__} <{__email__}>"
+__copyright__ = f"Copyright (c) 2019-2020 {__author__} <{__email__}>"
 
 paraview_plugin_version = __version__
 
 meshio_to_vtk_type = meshio.vtk._vtk.meshio_to_vtk_type
 vtk_to_meshio_type = meshio.vtk._vtk.vtk_to_meshio_type
-extensions = ["tmf"]
+extensions = ["hmf"]
 input_filetypes = ["TMF"]
 
 

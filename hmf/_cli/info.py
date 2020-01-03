@@ -47,11 +47,11 @@ def info(argv=None):
 
 def _get_info_parser():
     parser = argparse.ArgumentParser(
-        description=("Print tmf mesh info."),
+        description=("Print hmf mesh info."),
         formatter_class=argparse.RawTextHelpFormatter,
     )
 
-    parser.add_argument("infile", type=str, help="tmf mesh file to be read from")
+    parser.add_argument("infile", type=str, help="hmf mesh file to be read from")
 
     parser.add_argument(
         "--version",

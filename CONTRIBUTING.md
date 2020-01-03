@@ -1,8 +1,8 @@
-# tmf contributing guidelines
+# hmf contributing guidelines
 
-The tmf community appreciates your contributions via issues and
+The hmf community appreciates your contributions via issues and
 pull requests.  Note that the [code of conduct](CODE_OF_CONDUCT.md)
-applies to all interactions with the tmf project, including
+applies to all interactions with the hmf project, including
 issues and pull requests.
 
 When submitting pull requests, please follow the style guidelines of
