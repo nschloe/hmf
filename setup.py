@@ -10,7 +10,7 @@ with open(os.path.join(base_dir, "hmf", "__about__.py"), "rb") as f:
 
 
 setup(
-    name="hmf",
+    name="hmftools",
     version=about["__version__"],
     packages=find_packages(),
     url="https://github.com/nschloe/hmf",
@@ -20,8 +20,8 @@ setup(
     },
     author=about["__author__"],
     author_email=about["__email__"],
-    install_requires=["meshio", "lxml", "h5py"],
-    description="Tar + XDMF mesh format",
+    install_requires=["meshio", "h5py"],
+    description="HMF mesh format",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     license=about["__license__"],

@@ -1,28 +1,7 @@
-"""
-I/O for XDMF.
-http://www.xdmf.org/index.php/XDMF_Model_and_Format
-"""
-import os
-from io import BytesIO
-
 import h5py
 import meshio
 import numpy
 
-# from .._common import CDATA, cell_data_from_raw, raw_from_cell_data, write_xml
-# from .._exceptions import ReadError, WriteError
-# from .._helpers import register
-# from .._mesh import Mesh
-# from .common import (
-#     attribute_type,
-#     dtype_to_format_string,
-#     meshio_to_xdmf_type,
-#     meshio_type_to_xdmf_index,
-#     numpy_to_xdmf_dtype,
-#     translate_mixed_cells,
-#     xdmf_to_meshio_type,
-#     xdmf_to_numpy_type,
-# )
 meshio_to_xdmf_type = {
     "vertex": ["Polyvertex"],
     "line": ["Polyline"],
@@ -41,23 +20,6 @@ meshio_to_xdmf_type = {
     "hexahedron20": ["Hexahedron_20", "Hex_20"],
 }
 xdmf_to_meshio_type = {v: k for k, vals in meshio_to_xdmf_type.items() for v in vals}
-
-
-def attribute_type(data):
-    # <http://www.xdmf.org/index.php/XDMF_Model_and_Format#Attribute>
-    if len(data.shape) == 1 or (len(data.shape) == 2 and data.shape[1] == 1):
-        return "Scalar"
-    elif len(data.shape) == 2 and data.shape[1] in [2, 3]:
-        return "Vector"
-    elif (len(data.shape) == 2 and data.shape[1] == 9) or (
-        len(data.shape) == 3 and data.shape[1] == 3 and data.shape[2] == 3
-    ):
-        return "Tensor"
-    elif len(data.shape) == 2 and data.shape[1] == 6:
-        return "Tensor6"
-
-    assert len(data.shape) == 3
-    return "Matrix"
 
 
 def raw_from_cell_data(cell_data):
@@ -104,8 +66,6 @@ def read(filename):
         field_data = {}
 
         for key, value in grid.items():
-            print(key)
-
             if key[:8] == "Topology":
                 cell_type = value.attrs["TopologyType"]
                 cells[xdmf_to_meshio_type[cell_type]] = value[()]
@@ -115,32 +75,14 @@ def read(filename):
                 assert value.attrs["GeometryType"] in ["XY", "XYZ"]
                 points = value[()]
 
-            elif key == "Information":
-                c_data = c.text
-                if not c_data:
-                    raise ReadError()
-                field_data = self.read_information(c_data)
-
             else:
                 assert key == "Attribute"
-                # Don't be too strict here: FEniCS, for example, calls this
-                # 'AttributeType'.
-                # assert c.attrib['Type'] == 'None'
-
-                data_items = list(c)
-                if len(data_items) != 1:
-                    raise ReadError()
-                data_item = data_items[0]
-
-                data = self._read_data_item(data_item)
-
-                name = c.attrib["Name"]
-                if c.attrib["Center"] == "Node":
-                    point_data[name] = data
+                name = value.attrs["Name"]
+                if value.attrs["Center"] == "Node":
+                    point_data[name] = value[()]
                 else:
-                    if c.attrib["Center"] != "Cell":
-                        raise ReadError()
-                    cell_data_raw[name] = data
+                    assert value.attrs["Center"] == "Cell"
+                    cell_data_raw[name] = value[()]
 
         cell_data = cell_data_from_raw(cells, cell_data_raw)
 
@@ -153,46 +95,11 @@ def read(filename):
         )
 
 
+def write_points_cells(filename, points, cells, **kwargs):
+    write(filename, meshio.Mesh(points, cells), **kwargs)
 
 
-
-def _read_data_item(self, data_item):
-    info = data_item.text.strip()
-    filename, h5path = info.split(":")
-
-    # The HDF5 file path is given with respect to the XDMF (XML) file.
-    full_hdf5_path = os.path.join(os.path.dirname(self.filename), filename)
-
-    f = h5py.File(full_hdf5_path, "r")
-    if h5path[0] != "/":
-        raise ReadError()
-
-    for key in h5path[1:].split("/"):
-        f = f[key]
-    # `[()]` gives a numpy.ndarray
-    return f[()]
-
-
-def read_information(self, c_data):
-    field_data = {}
-    root = ET.fromstring(c_data)
-    for child in root:
-        str_tag = child.attrib["key"]
-        dim = int(child.attrib["dim"])
-        num_tag = int(child.text)
-        field_data[str_tag] = numpy.array([num_tag, dim])
-    return field_data
-
-
-def write_points_cells(
-    filename, points, cells, compression=None, compression_opts=None
-):
-    write(
-        filename, meshio.Mesh(points, cells), compression=None, compression_opts=None,
-    )
-
-
-def write(filename, mesh, compression=None, compression_opts=None):
+def write(filename, mesh, compression="gzip", compression_opts=None):
     with h5py.File(filename, "w") as h5_file:
         h5_file.attrs["type"] = "hmf"
         h5_file.attrs["version"] = "0.1"
@@ -246,9 +153,8 @@ def write_point_data(point_data, grid, compression, compression_opts):
             compression=compression,
             compression_opts=compression_opts,
         )
-        att.attrs["name"] = name
-        att.attrs["center"] = "Node"
-        att.attrs["AttributeType"] = attribute_type(data)
+        att.attrs["Name"] = name
+        att.attrs["Center"] = "Node"
 
 
 def write_cell_data(cell_data, grid, compression, compression_opts):
@@ -260,15 +166,5 @@ def write_cell_data(cell_data, grid, compression, compression_opts):
             compression=compression,
             compression_opts=compression_opts,
         )
-        att.attrs["name"] = name
-        att.attrs["center"] = "Cell"
-        att.attrs["AttributeType"] = attribute_type(data)
-
-
-# def write_field_data(self, field_data, information):
-#     info = ET.Element("main")
-#     for name, data in field_data.items():
-#         data_item = ET.SubElement(info, "map", key=name, dim=str(data[1]))
-#         data_item.text = str(data[0])
-#     # information.text = ET.CDATA(ET.tostring(info))
-#     information.append(CDATA(ET.tostring(info).decode("utf-8")))
+        att.attrs["Name"] = name
+        att.attrs["Center"] = "Cell"
