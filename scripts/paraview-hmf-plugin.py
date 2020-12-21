@@ -1,7 +1,5 @@
-import numpy as np
-
 import meshio
-from hmf import __email__, __version__, read, write_points_cells
+import numpy as np
 from paraview.util.vtkAlgorithm import (
     VTKPythonAlgorithmBase,
     smdomain,
@@ -11,6 +9,8 @@ from paraview.util.vtkAlgorithm import (
 )
 from vtkmodules.numpy_interface import dataset_adapter as dsa
 from vtkmodules.vtkCommonDataModel import vtkUnstructuredGrid
+
+from hmf import __email__, __version__, read, write_points_cells
 
 __author__ = "Tianyi Li, Nico Schlömer"
 __copyright__ = f"Copyright (c) 2019-2020 {__author__} <{__email__}>"

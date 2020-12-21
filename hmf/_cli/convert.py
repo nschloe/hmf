@@ -2,7 +2,6 @@ import argparse
 import os
 
 import numpy
-
 from meshio._helpers import _writer_map, read, reader_map, write
 
 from .._main import read as hmf_read

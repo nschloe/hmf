@@ -1,7 +1,6 @@
 import h5py
-import numpy
-
 import meshio
+import numpy
 
 meshio_to_xdmf_type = {
     "vertex": ["Polyvertex"],
