@@ -5,7 +5,7 @@
 
 [![gh-actions](https://img.shields.io/github/workflow/status/nschloe/hmf/ci?style=flat-square)](https://github.com/nschloe/hmf/actions)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/psf/black)
-[![PyPi Version](https://img.shields.io/pypi/v/hmf.svg?style=flat-square)](https://pypi.org/project/hmftools)
+[![PyPi Version](https://img.shields.io/pypi/v/hmftools.svg?style=flat-square)](https://pypi.org/project/hmftools)
 [![GitHub stars](https://img.shields.io/github/stars/nschloe/hmf.svg?style=flat-square&logo=github&label=Stars&logoColor=white)](https://github.com/nschloe/hmf)
 [![PyPi downloads](https://img.shields.io/pypi/dm/hmf.svg?style=flat-square)](https://pypistats.org/packages/hmftools)
 
