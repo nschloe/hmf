@@ -1,7 +1,10 @@
-__version__ = "0.0.3"
-__author__ = "Nico Schlömer"
-__email__ = "nico.schloemer@gmail.com"
-__copyright__ = f"Copyright (c) 2019-2020 {__author__} <{__email__}>"
-__website__ = "https://github.com/nschloe/hmf"
-__license__ = "License :: OSI Approved :: MIT License"
-__status__ = "Development Status :: 3 - Alpha"
+try:
+    # Python 3.8
+    from importlib import metadata
+except ImportError:
+    import importlib_metadata as metadata
+
+try:
+    __version__ = metadata.version("hmftools")
+except Exception:
+    __version__ = "unknown"

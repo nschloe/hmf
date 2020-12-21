@@ -10,23 +10,20 @@ from paraview.util.vtkAlgorithm import (
 from vtkmodules.numpy_interface import dataset_adapter as dsa
 from vtkmodules.vtkCommonDataModel import vtkUnstructuredGrid
 
-from hmf import __email__, __version__, read, write_points_cells
-
-__author__ = "Tianyi Li, Nico Schlömer"
-__copyright__ = f"Copyright (c) 2019-2020 {__author__} <{__email__}>"
+from hmf import __version__, read, write_points_cells
 
 paraview_plugin_version = __version__
 
 meshio_to_vtk_type = meshio.vtk._vtk.meshio_to_vtk_type
 vtk_to_meshio_type = meshio.vtk._vtk.vtk_to_meshio_type
 extensions = ["hmf"]
-input_filetypes = ["TMF"]
+input_filetypes = ["HMF"]
 
 
 @smproxy.reader(
-    name="TMF reader",
+    name="HMF reader",
     extensions=extensions,
-    file_description="TMF file",
+    file_description="HMF file",
     support_reload=False,
 )
 class meshioReader(VTKPythonAlgorithmBase):
@@ -39,7 +36,7 @@ class meshioReader(VTKPythonAlgorithmBase):
 
     @smproperty.stringvector(name="FileName")
     @smdomain.filelist()
-    @smhint.filechooser(extensions=extensions, file_description="TMF file")
+    @smhint.filechooser(extensions=extensions, file_description="HMF file")
     def SetFileName(self, filename):
         if self._filename != filename:
             self._filename = filename
@@ -128,7 +125,7 @@ class meshioReader(VTKPythonAlgorithmBase):
 
 
 @smproxy.writer(
-    name="TMF writer",
+    name="HMF writer",
     extensions=extensions,
     file_description="meshio-supported files",
     support_reload=False,
