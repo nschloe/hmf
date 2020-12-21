@@ -3,11 +3,14 @@
   <p align="center"><a href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">HDF</a>-only <a href="http://xdmf.org/index.php/Main_Page">XDMF</a>.</p>
 </p>
 
-[![gh-actions](https://img.shields.io/github/workflow/status/nschloe/hmf/ci?style=flat-square)](https://github.com/nschloe/hmf/actions)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/psf/black)
 [![PyPi Version](https://img.shields.io/pypi/v/hmftools.svg?style=flat-square)](https://pypi.org/project/hmftools)
-[![GitHub stars](https://img.shields.io/github/stars/nschloe/hmf.svg?style=flat-square&logo=github&label=Stars&logoColor=white)](https://github.com/nschloe/hmf)
-[![PyPi downloads](https://img.shields.io/pypi/dm/hmf.svg?style=flat-square)](https://pypistats.org/packages/hmftools)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/hmftools.svg?style=flat-square)](https://pypi.org/pypi/hmftools/)
+[![GitHub stars](https://img.shields.io/github/stars/nschloe/hmftools.svg?style=flat-square&logo=github&label=Stars&logoColor=white)](https://github.com/nschloe/hmftools)
+[![PyPi downloads](https://img.shields.io/pypi/dm/hmftools.svg?style=flat-square)](https://pypistats.org/packages/hmftools)
+
+[![gh-actions](https://img.shields.io/github/workflow/status/nschloe/hmftools/ci?style=flat-square)](https://github.com/nschloe/hmftools/actions?query=workflow%3Aci)
+[![codecov](https://img.shields.io/codecov/c/github/nschloe/hmftools.svg?style=flat-square)](https://codecov.io/gh/nschloe/hmftools)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/psf/black)
 
 [The XDMF data and mesh format](http://xdmf.org/index.php/Main_Page) is arguably one of
 the best mesh formats out there in terms of file size, I/O speed, and ecosystem support.
